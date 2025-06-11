@@ -1,1 +1,26 @@
-<p>usuarios works!</p>
+<div class="home-container">
+  <div class="form-box">
+    <h2>Bem-vindo à Biblioteca</h2>
+    <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+      <input
+        type="text"
+        name="nome"
+        placeholder="Nome"
+        [(ngModel)]="nome"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        [(ngModel)]="email"
+        required
+      />
+      <div class="buttons">
+        <button type="submit" class="btn primary">Entrar</button>
+        <button type="button" class="btn secondary" (click)="onRegistrar()">Registrar Conta</button>
+      </div>
+    </form>
+    <div *ngIf="mensagem" style="margin-top:10px;">{{ mensagem }}</div>
+  </div>
+</div>
