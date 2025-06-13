@@ -1,0 +1,34 @@
+<app-header-livros></app-header-livros>
+
+<div class="livros-container">
+    <div class="livros-header">
+        <h2>Livros Reservados</h2>
+    </div>
+    </div>
+  <table class="tabela-livros">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Gênero</th>
+        <th>ISBN</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let livro of livrosPaginados">
+        <td>{{ livro.titulo }}</td>
+        <td>{{ livro.autorId }}</td>
+        <td>{{ livro.genero }}</td>
+        <td>{{ livro.isbn }}</td>
+        <td>{{ livro.descricao }}</td>
+        
+    </tbody>
+
+    </table>
+
+    <div class="pagination-container">
+      <button class="pagination-button" [disabled]="paginaAtual === 1" (click)="paginaAnterior()">&#8592;</button>
+      <span class="pagination-info">Página {{paginaAtual}} de {{totalPaginas}}</span>
+      <button class="pagination-button" [disabled]="paginaAtual === totalPaginas" (click)="proximaPagina()">&#8594;</button>
+    </div>

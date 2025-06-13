@@ -1,1 +1,52 @@
-<p>livros works!</p>
+<app-header-livros></app-header-livros>
+
+<div class="livros-container">
+    <div class="livros-header">
+        <h2>📚 Livros</h2>
+        <div class="top-bar">
+  <button class="button" (click)="adicionarLivro()">Regristrar</button>
+
+<input
+  type="text"
+  class="search-input"
+  placeholder="Pesquisar por título, autor ou gênero..."
+  [(ngModel)]="filtro"
+  (ngModelChange)="filtrarLivros()"
+/>
+</div>
+</div>
+  <table class="tabela-livros">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Gênero</th>
+        <th>ISBN</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let livro of livrosPaginados">
+        <td>{{ livro.titulo }}</td>
+        <td>{{ livro.autorId }}</td>
+        <td>{{ livro.genero }}</td>
+        <td>{{ livro.isbn }}</td>
+        <td>{{ livro.descricao }}</td>
+        <td>
+        <button class="btn-acao" (click)="editarLivro(livro)">
+        <i class="fa fa-edit"></i>
+        </button>
+        <button class="btn-acao excluir" (click)="excluirLivro(livro.id)">
+        <i class="fa fa-trash"></i>
+        </button>
+        </td>
+    </tbody>
+    </table>
+<div class="pagination-container">
+  <button class="pagination-button" [disabled]="paginaAtual === 1" (click)="paginaAnterior()">&#8592;</button>
+  <span class="pagination-info">Página {{paginaAtual}} de {{totalPaginas}}</span>
+  <button class="pagination-button" [disabled]="paginaAtual === totalPaginas" (click)="proximaPagina()">&#8594;</button>
+</div>
+</div>
+

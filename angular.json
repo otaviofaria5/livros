@@ -23,10 +23,13 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/assets",
+                "output": "assets"
               }
+          
             ],
             "styles": [
+              "node_modules/lineicons/dist/lineicons.css",
               "src/styles.css"
             ],
             "scripts": [],

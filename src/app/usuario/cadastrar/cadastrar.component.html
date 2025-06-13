@@ -1,0 +1,45 @@
+<div class="home-container">
+  <div class="form-box">
+    <h2>Cadastro</h2>
+    <p>Registrar uma nova conta</p>
+
+    <form #registrarForm="ngForm" (ngSubmit)="onRegistrar()">
+      <input
+        type="text"
+        name="nome"
+        placeholder="Nome"
+        [(ngModel)]="usuario.nome"
+        required
+      />
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        [(ngModel)]="usuario.email"
+        required
+      />
+
+      <input
+        type="text"
+        name="endereco"
+        placeholder="Endereço"
+        [(ngModel)]="usuario.endereco"
+        required
+      />
+
+      <div class="buttons">
+        <button type="submit" class="btn primary">Cadastrar</button>
+          <button type="button" class="btn secondary" (click)="onCancelar()">Cancelar</button>
+      </div>
+    </form>
+
+    <div *ngIf="mensagemSucesso" class="alert sucesso">
+      {{ mensagemSucesso }}
+    </div>
+
+    <div *ngIf="mensagemErro" class="alert erro">
+      {{ mensagemErro }}
+    </div>
+  </div>
+</div>

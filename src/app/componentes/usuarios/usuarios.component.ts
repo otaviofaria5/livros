@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuarioService } from '../../service/usuario.service';
 import { Router } from '@angular/router';
+import { Usuarios } from '../../model/usuarios';
 
 @Component({
   selector: 'app-usuarios',
@@ -11,14 +12,19 @@ import { Router } from '@angular/router';
   imports: [
     FormsModule,
     CommonModule,
-    HttpClientModule, 
-  ],
+    HttpClientModule,
+
+],
   templateUrl: './usuarios.component.html',
-  styleUrl: './usuarios.component.css'
+  styleUrls: ['./usuarios.component.css']
 })
 export class UsuariosComponent {
-  nome = '';
-  email = '';
+    usuario: Usuarios ={
+    nome: '',
+    email: '',
+    endereco: ''
+  };
+
   mensagem = '';
 
   constructor(
@@ -27,10 +33,10 @@ export class UsuariosComponent {
   ) {}
 
   onLogin() {
-    this.usuarioService.login(this.nome, this.email).subscribe({
+    this.usuarioService.login(this.usuario.nome || '', this.usuario.email || '').subscribe({
       next: () => {
         this.mensagem = 'Login realizado com sucesso!';
-        this.router.navigate(['/menu']);
+        this.router.navigate(['/header']);
       },
       error: () => this.mensagem = 'Usuário não encontrado.'
     });

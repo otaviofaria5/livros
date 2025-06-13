@@ -1,0 +1,35 @@
+<div class="form-container" @fadeIn>
+  <h2>Editar Livro</h2>
+
+   <form (ngSubmit)="salvar()" #livroForm="ngForm">
+    <label for="titulo">Título</label>
+    <input id="titulo" type="text" [(ngModel)]="livro.titulo" name="titulo" required />
+
+    <label for="autor">Autor</label>
+    <input id="autor" type="text" [(ngModel)]="livro.autorId" name="autor" required />
+
+    <label for="genero">Gênero</label>
+    <input id="genero" type="text" [(ngModel)]="livro.genero" name="genero" required />
+
+    <label for="isbn">ISBN</label>
+    <input id="isbn" type="text" [(ngModel)]="livro.isbn" name="isbn" required />
+
+    <label for="descricao">Descrição</label>
+    <textarea id="descricao" [(ngModel)]="livro.descricao" name="descricao"></textarea>
+
+  <div *ngIf="mensagemSucesso" class="alert sucesso">
+    {{ mensagemSucesso }}
+  </div>
+
+  <div *ngIf="mensagemErro" class="alert erro">
+    {{ mensagemErro }}
+  </div>
+
+    <div class="botoes">
+      <button type="submit">Salvar</button>
+      <button type="button" (click)="voltar()">Voltar</button>
+    </div>
+    
+
+  </form>
+</div>

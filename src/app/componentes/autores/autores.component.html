@@ -1,1 +1,46 @@
-<p>autores works!</p>
+
+<div class="autor-container">
+    <div class="autor-header">
+        <h2>Autores</h2>
+        <div class="top-bar">
+  <button class="button" (click)="adicionarAutor()">Regristrar</button>
+
+<input
+  type="text"
+  class="search-input"
+  placeholder="Pesquisar por Autor"
+  [(ngModel)]="filtro"
+  (ngModelChange)="filtrarAutor()"
+/>
+</div>
+</div>
+  <table class="tabela-autor">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Biografia</th>
+        <th>Nacionalidade</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let autores of autoresPaginados">
+        <td>{{ autores.nome }}</td>
+        <td>{{ autores.biografia }}</td>
+        <td>{{ autores.nacionalidade }}</td>
+        <td>
+        <button class="btn-acao" (click)="editarAutor(autores)">
+        <i class="fa fa-edit"></i>
+        </button>
+        <button class="btn-acao excluir" (click)="excluirAutor(autores.id)">
+        <i class="fa fa-trash"></i>
+        </button>
+        </td>
+    </tbody>
+    </table>
+<div class="pagination-container">
+  <button class="pagination-button" [disabled]="paginaAtual === 1" (click)="paginaAnterior()">&#8592;</button>
+  <span class="pagination-info">Página {{paginaAtual}} de {{totalPaginas}}</span>
+  <button class="pagination-button" [disabled]="paginaAtual === totalPaginas" (click)="proximaPagina()">&#8594;</button>
+</div>
+</div>

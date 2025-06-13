@@ -1,19 +1,21 @@
+
 <div class="home-container">
   <div class="form-box">
     <h2>Bem-vindo à Biblioteca</h2>
+    <p>Faça login para acessar sua conta</p>
     <form #loginForm="ngForm" (ngSubmit)="onLogin()">
       <input
         type="text"
         name="nome"
         placeholder="Nome"
-        [(ngModel)]="nome"
+        [(ngModel)]="usuario.nome"
         required
       />
       <input
         type="email"
         name="email"
         placeholder="Email"
-        [(ngModel)]="email"
+        [(ngModel)]="usuario.email"
         required
       />
       <div class="buttons">
@@ -24,3 +26,4 @@
     <div *ngIf="mensagem" style="margin-top:10px;">{{ mensagem }}</div>
   </div>
 </div>
+

@@ -1,0 +1,15 @@
+.text {
+    font-size: 18px;
+    background-color: orange;
+    padding: 29px;
+    font-weight: bold;
+}
+
+.navbar {
+    font-size: 18px;
+    font-style: normal;
+    font-family: 'Arial', sans-serif;
+    text-align: left;
+    color: #000;
+    font-weight: bold;
+}

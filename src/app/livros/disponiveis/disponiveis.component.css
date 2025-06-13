@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #323131;
+  margin: 0;
+  padding: 0;
+}
+
+.livros-container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 20px;
+  color: #1b1b1b;
+  text-align: center;
+}
+
+.tabela-livros {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+.tabela-livros th,
+.tabela-livros td {
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.tabela-livros th {
+  background-color: #f9f9f9;
+  color: #1b1b1b;
+  font-weight: bold;
+}
+
+.tabela-livros tr:hover {
+  background-color: 
+  #f1f1f1;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 6px; 
+  font-family: Arial, sans-serif;
+}
+
+.pagination-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 4px 10px; 
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.pagination-button:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination-button:disabled {
+  background-color: #e0e0e0;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0 4px;
+}
