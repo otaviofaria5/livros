@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UsuariosComponent } from "../../componentes/usuarios/usuarios.component";
+import { UsuariosComponent } from '../../componentes/usuarios/usuarios.component';
 
 
 @Component({
@@ -10,5 +10,7 @@ import { UsuariosComponent } from "../../componentes/usuarios/usuarios.component
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
 }
+
+
+

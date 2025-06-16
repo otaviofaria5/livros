@@ -1,7 +1,7 @@
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './shared/home/home.component';
 import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
-
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LivrosComponent } from './componentes/livros/livros.component';
@@ -15,23 +15,19 @@ import { AvaliacoesComponent } from './componentes/avaliacoes/avaliacoes.compone
 import { HeaderLivrosComponent } from './livros/header-livros/header-livros.component';
 import { CabecalhoComponent } from './shared/cabecalho/cabecalho.component';
 import { CadastrarComponent } from './usuario/cadastrar/cadastrar.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 export const routes: Routes = [
-
-    {
-      path:'',
-      component: HomeComponent,
-
-    },
-    {
-      path:'usuarios',
-      component: UsuariosComponent
-    },
-    {
-      path: 'cadastrar',
-      component: CadastrarComponent
-    },
-      {
+  {
+    path: '',
+    component: HomeComponent,
+    children: [
+      { path: 'usuarios', component: UsuariosComponent },
+      { path: 'cadastrar', component: CadastrarComponent },
+    ]
+  },
+  {
     path: 'header',
     component: HeaderComponent,
     children: [
@@ -44,10 +40,14 @@ export const routes: Routes = [
       { path: 'emprestimos', component: EmprestimosComponent },
       { path: 'avaliacoes', component: AvaliacoesComponent },
       { path: 'sidebar', component: SidebarComponent },
-      {path: 'header-livros', component: HeaderLivrosComponent},
-      {path: 'cabecalho', component: CabecalhoComponent}
-
+      { path: 'header-livros', component: HeaderLivrosComponent },
+      { path: 'cabecalho', component: CabecalhoComponent }
     ]
   }
 ];
 
+@NgModule({
+  imports: [RouterModule.forRoot(routes), FormsModule, CommonModule],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}

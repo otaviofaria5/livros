@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { UsuarioService } from '../../service/usuario.service';
 import { Router } from '@angular/router';
 import { Usuarios } from '../../model/usuarios';
@@ -12,28 +11,30 @@ import { Usuarios } from '../../model/usuarios';
   imports: [
     FormsModule,
     CommonModule,
-    HttpClientModule,
-
-],
+  ],
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.css']
 })
-export class UsuariosComponent {
-    usuario: Usuarios ={
+export class UsuariosComponent implements OnInit {
+    usuario: Usuarios = {
     nome: '',
     email: '',
     endereco: ''
-  };
+    }
 
-  mensagem = '';
+    mensagem = '';
 
   constructor(
     private usuarioService: UsuarioService,
     private router: Router
   ) {}
 
+  ngOnInit(): void {
+
+  }
+
   onLogin() {
-    this.usuarioService.login(this.usuario.nome || '', this.usuario.email || '').subscribe({
+  this.usuarioService.login(this.usuario).subscribe({
       next: () => {
         this.mensagem = 'Login realizado com sucesso!';
         this.router.navigate(['/header']);

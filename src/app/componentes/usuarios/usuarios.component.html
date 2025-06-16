@@ -1,29 +1,33 @@
-
-<div class="home-container">
+<div class="login-wrapper">
   <div class="form-box">
     <h2>Bem-vindo à Biblioteca</h2>
     <p>Faça login para acessar sua conta</p>
-    <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      
       <input
         type="text"
         name="nome"
-        placeholder="Nome"
         [(ngModel)]="usuario.nome"
+        placeholder="Nome"
         required
       />
       <input
+
         type="email"
         name="email"
-        placeholder="Email"
         [(ngModel)]="usuario.email"
+        placeholder="Email"
         required
       />
+
       <div class="buttons">
         <button type="submit" class="btn primary">Entrar</button>
         <button type="button" class="btn secondary" (click)="onRegistrar()">Registrar Conta</button>
       </div>
     </form>
-    <div *ngIf="mensagem" style="margin-top:10px;">{{ mensagem }}</div>
-  </div>
-</div>
 
+    <div *ngIf="mensagem" class="mensagem">{{ mensagem }}
+    </div>
+  </div>
+</div>

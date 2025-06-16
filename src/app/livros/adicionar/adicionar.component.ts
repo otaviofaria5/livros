@@ -34,7 +34,6 @@ export class AdicionarComponent implements OnInit {
      private router: Router) {}
 
   ngOnInit(): void {
-    this.CriarLivro();
   }
 CriarLivro(): void {
   const novoLivro: Livros = {

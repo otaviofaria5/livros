@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { HeaderLivrosComponent } from "../../livros/header-livros/header-livros.component";
+import { Autores } from '../../model/autores';
+import { AutoresService } from '../../service/autores.service';
 
 @Component({
   selector: 'app-livros',
@@ -20,6 +22,7 @@ import { HeaderLivrosComponent } from "../../livros/header-livros/header-livros.
 })
 export class LivrosComponent implements OnInit {
   livros: Livros[] = [];
+  autores: Autores[] = [];
   livrosFiltrados: Livros[] = []; 
   livrosPaginados: Livros[] = [];
 
@@ -29,29 +32,49 @@ export class LivrosComponent implements OnInit {
 
   constructor(
     private livroService: LivroService,
+    private autorService: AutoresService,
     private router: Router
   ) {}
 
+
   ngOnInit(): void {
     this.carregarLivros();
-  }
+  }    
+carregarLivros(): void {
+  this.autorService.getAutores().subscribe({
+    next: (autores) => {
+      this.autores = autores;
 
-  carregarLivros(): void {
-    this.livroService.getLivros().subscribe({
-      next: (res) => {
-        this.livros = res;
-        this.livrosFiltrados = res;
-        this.atualizarLivrosPaginados();
-      }
-    });
-  }
+      this.livroService.getLivros().subscribe({
+        next: (livros) => {
+          this.livros = livros.map(livro => {
+            const autor = this.autores.find(a => a.nome === livro.autorId);
+            return {
+              ...livro,
+              nomeAutor: autor ? autor.nome : 'Desconhecido'
+            };
+          });
+
+          this.livrosFiltrados = this.livros;
+          this.atualizarLivrosPaginados();
+        },
+        error: (err) => {
+          console.error('Erro ao buscar livros:', err);
+        }
+      });
+    },
+    error: (err) => {
+      console.error('Erro ao buscar autores:', err);
+    }
+  });
+}
 
     adicionarLivro(): void {
-    this.router.navigate(['/adicionar']);
+    this.router.navigate(['header/adicionar']);
   }
 
   editarLivro(livro: Livros): void {
-    this.router.navigate(['/editar', livro.id]);
+    this.router.navigate(['header/editar', livro.id]);
   }
 
   excluirLivro(id: string): void {

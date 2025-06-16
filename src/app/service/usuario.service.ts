@@ -11,8 +11,8 @@ export class UsuarioService {
   private apiUrl = `${environment.apiUrl}/usuario`;
   constructor(private http: HttpClient) {}
 
-  login(nome: string, email: string): Observable<Usuarios> {
-  return this.http.get<Usuarios>(`${this.apiUrl}/login`, { params: { nome, email } });
+  login(Usuario : Usuarios): Observable<Usuarios> {
+  return this.http.get<Usuarios>(`${this.apiUrl}/login`,  { params: { nome: Usuario.nome, email: Usuario.email } });
 }
 CadastrarUsuario(Usuario: Usuarios): Observable<Usuarios> {
   return this.http.post<Usuarios>(this.apiUrl, Usuario); 
